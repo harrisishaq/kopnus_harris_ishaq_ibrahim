@@ -1,64 +1,61 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Job Portal API
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This repository contains the backend API for a job portal application. The API allows users to perform various actions related to job vacancies, user profiles, and job applications.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **User Authentication**: Users can register, login, and logout. Admins have their own authentication for accessing admin-specific endpoints.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Job Vacancies**: Admins can create, update, delete, and publish job vacancies. Users can view published job vacancies and apply to them.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **User Profiles**: Users can create and update their profiles, including uploading their CVs.
 
-## Learning Laravel
+- **Job Applications**: Admins can view a list of users who have applied to their job vacancies. Users can apply to job vacancies, and each user can only apply once to each vacancy.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## API Endpoints
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+The following are the main API endpoints available in this application:
 
-## Laravel Sponsors
+- **User Authentication**:
+  - `POST /api/register`: Register a new user.
+  - `POST /api/login`: Login as a user or admin.
+  - `POST /api/users/logout`: Logout the current user.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- **Job Vacancies**:
+  - `GET /api/job-vacancies`: Get a list of all job vacancies.
+  - `POST /api/admins/job-vacancies`: Create a new job vacancy (admin only).
+  - `POST /api/job-vacancies/{jobVacancy}/apply`: Apply to a job vacancy.
 
-### Premium Partners
+- **User Profiles**:
+  - `POST /api/users/profile`: Add data profile of user.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- **Admin Actions**:
+  - `GET /api/job-vacancies/{jobVacancy}/applicants`: Get a list of users who have applied to a specific job vacancy (admin only).
+  - `GET /api/job-vacancies/{jobVacancy}/applicants/{user}/cv`: Download the CV of a specific user who applied to a specific job vacancy (admin only).
 
-## Contributing
+## Technologies Used
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Laravel: Backend framework for building the API.
+- MySQL: Database management system for storing application data.
+- Postman: API testing tool used for testing the API endpoints.
 
-## Code of Conduct
+## Setup Instructions
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. Clone the repository: `git clone https://github.com/your-username/job-portal-api.git`
+2. Install dependencies: `composer install`
+3. Create a `.env` file and configure your environment variables.
+4. Generate an application key: `php artisan key:generate`
+5. Run migrations: `php artisan migrate`
+6. Start the development server: `php artisan serve`
 
-## Security Vulnerabilities
+## Future Improvement Plan
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Here are some areas for potential improvement in future versions of the Job Portal API:
 
-## License
+- Enhanced error handling and validation.
+- Completing CRUD features of each features exist.
+- Adding support for pagination to efficiently handle large datasets.
+- Improving process flow of job vacancy process.
+- Integrating with external services such as email notifications for job application status updates.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Contributions and suggestions for improvements are welcome!
