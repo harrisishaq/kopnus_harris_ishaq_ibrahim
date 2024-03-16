@@ -18,7 +18,7 @@ The following are the main API endpoints available in this application:
 
 - **User Authentication**:
   - `POST /api/register`: Register a new user.
-  - `POST /api/login`: Login as a user or admin.
+  - `POST /api/login`: Login as a user.
   - `POST /api/users/logout`: Logout the current user.
 
 - **Job Vacancies**:
@@ -32,6 +32,8 @@ The following are the main API endpoints available in this application:
 - **Admin Actions**:
   - `GET /api/job-vacancies/{jobVacancy}/applicants`: Get a list of users who have applied to a specific job vacancy (admin only).
   - `GET /api/job-vacancies/{jobVacancy}/applicants/{user}/cv`: Download the CV of a specific user who applied to a specific job vacancy (admin only).
+  - `POST /api/admins/login`: Admin login to system.
+  - `POST /api/admins/logout`: Admin logout from system.
 
 ## Technologies Used
 
